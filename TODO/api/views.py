@@ -1,3 +1,4 @@
+from django.db.migrations import serializer
 from django.shortcuts import render
 from django.http import JsonResponse
 
@@ -50,9 +51,18 @@ def taskCreate(request):
 @api_view(['POST'])
 def taskUpdate(request, pk):
     tasks = Task.objects.get(id=pk)
-    serializer = TaskSerializer(instance=task, data=request.data)
+    serializer = TaskSerializer(instance=tasks, data=request.data)
 
     if serializer.is_valid():
         serializer.save()
 
-    return Response(serializer)
+    return Response(serializer.data)
+
+
+@api_view(['DELETE'])
+def taskDelete(request, pk):
+    task = Task.objects.get(id=pk)
+    task.delete()
+
+    return Response('Item successfully deleted!')
+
