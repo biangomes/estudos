@@ -5,7 +5,6 @@ from api import views
 
 routers = DefaultRouter()
 routers.register("orgs", views.OrganizationViewSet)
-routers.register("orgsdelete", views.OrganizationDelete)
-routers.register("orgsquery", views.OrganizationQuery)
+
 
 urlpatterns = [path("", include(routers.urls))]
