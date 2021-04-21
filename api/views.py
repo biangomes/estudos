@@ -12,7 +12,7 @@ from api.integrations.github import GithubApi
 # 4 - Retornar os dados de organizações ordenados pelo score na listagem da API
 
 @api_view(['GET'])
-class OrganizationViewSet(viewsets.ModelViewSet):
+class OrganizationViewSet(viewsets.ViewSet):
 
     queryset = models.Organization.objects.all()
     serializer_class = serializers.OrganizationSerializer(queryset, many=True)
