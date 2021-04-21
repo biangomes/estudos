@@ -6,4 +6,6 @@ from api import views
 routers = DefaultRouter()
 routers.register("orgs", views.OrganizationViewSet, basename="Organization")
 
-urlpatterns = [path("", include(routers.urls))]
+urlpatterns = [
+    path("", include(routers.urls)),
+]
