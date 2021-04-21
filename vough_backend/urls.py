@@ -21,8 +21,7 @@ from api import views
 
 
 router = routers.DefaultRouter()
-router.register("orgsdelete", views.OrganizationDelete)
-router.register("orgsquery", views.OrganizationQuery)
+router.register(r'orgs', views.OrganizationViewSet, basename='Organization')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
