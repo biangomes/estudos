@@ -11,11 +11,12 @@ from api.integrations.github import GithubApi
 # 3 - Retornar corretamente os dados da organização
 # 4 - Retornar os dados de organizações ordenados pelo score na listagem da API
 
-@api_view(['GET'])
 class OrganizationViewSet(viewsets.ViewSet):
 
     queryset = models.Organization.objects.all()
     serializer_class = serializers.OrganizationSerializer(queryset, many=True)
+    http_method_names = ['get', ]
+
     lookup_field = "login"
 
     def retrieve(self, request, login=None):
