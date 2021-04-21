@@ -20,9 +20,6 @@ from rest_framework import routers
 from api import views
 
 
-router = routers.DefaultRouter()
-router.register(r'organization', views.OrganizationViewSet, basename='Organization')
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/", include("api.routes"), name="api"),
