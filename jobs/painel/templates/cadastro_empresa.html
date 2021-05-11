@@ -1,0 +1,19 @@
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Nome</label>
+    <input type="text" name="nome">
+
+    <label>Setor</label>
+    <input type="text" name="setor">
+
+    <label>CNPJ</label>
+    <input type="text" name="cnpj">
+
+    <label>Endereço</label>
+    <input type="text" name="endereco">
+
+
+    <input type="submit" value="Submit">
+
+</form>

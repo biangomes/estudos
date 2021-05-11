@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Empresa, Participante, ParticipanteVaga, Vaga
+from .models import Empresa, Participante, ParticipanteVaga, Vaga, EmpresaVaga
 
 
 # Register your models here.
@@ -19,3 +19,15 @@ class VagaAdmin(admin.ModelAdmin):
     list_display = ('nome', 'endereco', 'dt_abertura', 'dt_fechamento', 'texto', 'status', 'modalidade')
 
 admin.site.register(Vaga, VagaAdmin)
+
+
+class ParticipanteVagaAdmin(admin.ModelAdmin):
+    list_display = ('participante', 'dt_aplicacao', 'status_vaga')
+
+admin.site.register(ParticipanteVaga, ParticipanteVagaAdmin)
+
+
+class EmpresaVagaAdmin(admin.ModelAdmin):
+    list_display = ('empresa', 'vaga', 'qtd_vagas')
+
+admin.site.register(EmpresaVaga, EmpresaVagaAdmin)

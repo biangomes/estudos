@@ -66,3 +66,9 @@ class ParticipanteVaga(models.Model):
     )
 
     status = models.CharField(max_length=100, choices=status_vaga, default='Andamento')
+
+
+class EmpresaVaga(models.Model):
+    empresa = models.ForeignKey(Empresa, on_delete=models.RESTRICT)
+    vaga = models.OneToOneField(Vaga, on_delete=models.RESTRICT)
+    qtd_vagas = models.IntegerField(null=True, blank=True)
