@@ -1,8 +1,21 @@
-{% extends 'base.html' %}
+<!doctype html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>.:. Index .:. </title>
+</head>
+<body>
+    <h1>Bem-vindo(a) ao portal de emprego JobING!</h1>
 
-{%block "titulo" %}Encontre seu job aqui!{% endblock %}
+    <h3>Está concorrendo a uma vaga?</h3>
+    <h3>É uma empresa? <a href="{% url 'cadastro_empresa' %}">Cadastre-se aqui</a></h3>
+    <h3>Quer se candidatar? <a href="">Candidate-se aqui!</a></h3>
 
-{%block "conteudo" %}
+    <hr>
 
 
-{% endblock %}
+</body>
+</html>
