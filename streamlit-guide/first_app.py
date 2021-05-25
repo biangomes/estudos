@@ -26,9 +26,9 @@ def main():
         if submit:
             st.write("Insira os seus ativos")
             for i in range(int(qtd_ativos)):
-                ativo = st.text_input('Cód. ativo + .SA: ')
+                ativo = st.text_input('Cód. ativo + .SA: ', key=str(i))
                 lista_ativos.append(ativo)
-
+                submit_ticker = st.form_submit_button('ativos OK')
 
 if __name__ == '__main__':
     main()
