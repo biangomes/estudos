@@ -16,8 +16,10 @@ def cadastroEmpresa(request):
         setor = request.POST.get('setor')
         cnpj = request.POST.get('cnpj')
         endereco = request.POST.get('endereco')
-        cadastro_empresa = Empresa(nome=nome, setor=setor, cnpj=cnpj, endereco=endereco).save()
+        cadastro_empresa = Empresa(nome=nome, setor=setor, cnpj=cnpj, endereco=endereco)
         cadastro_empresa.is_staff = True
+        cadastro_empresa.save()
+
 
     return render(request, 'cadastro_empresa.html')
 
