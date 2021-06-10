@@ -30,7 +30,6 @@ def main():
         # Baixando os dados do Yahoo Finance
         for ticker in lista_ativos:
             df[ticker] = web.DataReader(ticker, data_source='yahoo', start=dt_inicio, end=dt_fim)['Adj Close']
-            plotagem = df.plot(figsize=(16,8))
 
         # Results can be either form or outside form
         if submit:
@@ -38,9 +37,6 @@ def main():
 
     if choice == 'Meus ativos':
         st.write(df.columns)
-
-    if choice == 'Gráficos':
-        plotagem.show();
 
 if __name__ == '__main__':
     main()
