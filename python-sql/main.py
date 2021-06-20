@@ -1,6 +1,6 @@
 # Import SQL driver e pandas
 import pyodbc
-import pandas as pd
+
 
 
 # Criando a conexao 
@@ -20,7 +20,7 @@ CREATE TABLE Funcionario (
     id INT PRIMARY KEY NOT NULL,
     nome VARCHAR (100),
     cpf VARCHAR (13),
-    email VARCHAR(40),
+    email VARCHAR(40)
 )
 """)
 
