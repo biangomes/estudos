@@ -30,8 +30,8 @@ def load_data():
 
     data = pd.read_csv(DATA_URL, index_col='codigo_ocorrencia', delimiter=';')
     data = data.rename(columns=columns)
-    data['longitude'].astype('float64')
-    data['latitude'].astype('float64')
+    # data['longitude'].astype('float64')
+    # data['latitude'].astype('float64')
     data.data = data.data + " " + data.ocorrencia_hora
     data.data = pd.to_datetime(data.data)
     data = data[list(columns.values())]
@@ -101,6 +101,6 @@ if tabela.checkbox("Mostrar tabela de dados"):
 
 
 # Mapa simples
-st.subheader("Mapa")
-
-st.map(filtered_df)
+# st.subheader("Mapa")
+#
+# st.map(filtered_df)
