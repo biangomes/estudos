@@ -2,8 +2,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from pandas_datareader import data as web
+import yfinance as yf
 import matplotlib.pyplot as plt
+# from pandas_datareader import data as pdr
 
 
 lista_ativos = []
@@ -11,7 +12,7 @@ df = pd.DataFrame()
 
 def main():
     st.title("Risco & Volatilidade: conhecendo o seu portfólio")
-    menu = ['Home', 'Teoria financeira', 'Gráficos', 'Meus ativos']
+    menu = ['Home', 'Teoria financeira', 'Meu Portfólio', 'Sobre']
     choice = st.sidebar.selectbox("Menu", menu)
 
     if choice == 'Home':
@@ -29,7 +30,7 @@ def main():
 
         # Baixando os dados do Yahoo Finance
         for ticker in lista_ativos:
-            df[ticker] = web.DataReader(ticker, data_source='yahoo', start=dt_inicio, end=dt_fim)['Adj Close']
+            df[ticker] = pdr.get_data_yahoo(ticker, start=dt_inicio, end=dt_fim)['Adj Close']
 
         # Results can be either form or outside form
         if submit:

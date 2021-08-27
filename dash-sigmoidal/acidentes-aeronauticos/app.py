@@ -28,6 +28,7 @@ def load_data():
         'total_aeronaves_envolvidas': 'aeronaves_envolvidas',
     }
 
+
     data = pd.read_csv(DATA_URL, index_col='codigo_ocorrencia', delimiter=';')
     data = data.rename(columns=columns)
     # data['longitude'].astype('float64')

@@ -1,30 +1,13 @@
+# Referencia: https://www.treinaweb.com.br/blog/consumindo-apis-com-python-parte-1
+# Consumindo APIs com Python - parte 1
 import requests
+import json
 
-print('### Consulta CEP ###')
+# def buscar_dados():
+#     request = requests.get("http://localhost:3002/api/todo")
+#     print(request.content)      # o retorno não será amigável
+#     todos = json.loads(request.content)
+#     print(todos)        # o retorno agora será amigável, pois se trata de um JSON
 
-# Obtendo cep do usuario
-cep = input("Digite o CEP para consulta: ")
-
-# CEP tem que ser de 8 dígitos
-if len(cep) != 8:
-    print('Quantidade inválida de dígitos')
-    exit()
-
-# Faz a requisicao
-request = requests.get('https://viacep.com.br/ws/{}/json/'.format(cep))
-
-# Passando para um JSON
-dado_json = request.json()
-
-
-# Se o CEP existir
-if 'erro' not in dado_json:
-    print('==> CEP ENCONTRADO <==')
-    print("CEP: {}".format(dado_json['cep']))
-    print("Logradouro: {}".format(dado_json['logradouro']))
-    print("Complemento: {}".format(dado_json['complemento']))
-    print("Bairro: {}".format(dado_json['bairro']))
-    print("Localidade: {}".format(dado_json['localidade']))
-    print("UF: {}".format(dado_json['uf']))
-else:
-    print('CEP inválido!')
+if __name__ == '__main__':
+    buscar_dados()

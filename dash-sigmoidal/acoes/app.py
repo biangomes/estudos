@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from pandas_datareader import data as web
 import streamlit as st
-import datetime
+from datetime import datetime
 import math
 
 
@@ -12,27 +12,32 @@ import math
 def load_data():
     atvs = []
     for nome_ativo in range(3):     # 3 é o máximo de ativos permitidos
-        nome = str(input("Nome do ativo + .SA: "))
+        nome = st.text_input("Nome do ativo + .SA: ", key=str(nome_ativo))
         atvs.append(nome)
 
-        # Recebe a data de início de observação dos ativos
-        a_start = str(input("Ano de início: "))
-        m_start = str(input("Mês de início: "))
-        d_start = str(input("Dia de início: "))
-        start = datetime.date(a_start, m_start, d_start)
+    # Recebe a data de início de observação dos ativos
+    # a_start = st.text_input("Ano de início: ", key=str(datetime.now()))
+    # m_start = st.text_input("Mês de início: ", key=str(datetime.now()))
+    # d_start = st.text_input("Dia de início: ", key=str(datetime.now()))
+    # start = datetime.date(a_start, m_start, d_start)
+    start = st.date_input("Data de início: ")
+    end = st.date_input("Data de fim: ")
 
-        # Recebe a data de fim de observção dos ativos
-        a_end = str(input("Ano de fim: "))
-        m_end = str(input("Mês de fim: "))
-        d_end = str(input("Dia de fim: "))
-        end = datetime.date(a_end, m_end, d_end)
 
-        # Criando um DataFrame vazio
-        data = pd.DataFrame()
+    # Recebe a data de fim de observção dos ativos
+    # a_end = st.text_input("Ano de fim: ", key=str(datetime.now()))
+    # m_end = st.text_input("Mês de fim: ", key=str(datetime.now()))
+    # d_end = st.text_input("Dia de fim: ", key=str(datetime.now()))
+    # end = datetime.date(a_end, m_end, d_end)
 
-        # Baixando os ativos, propriamente
-        for ativo in atvs:
-            data[ativo] = web.DataReader(ativo, data_source='yahoo', start=start, end=end)['Adj Close']
+    # Cria um DataFrame que é a principal estrutura que vamos utilizar pra nossa análise
+    # e geração de gráficos e insights
+    data = pd.DataFrame()
+
+    # Baixando os ativos no DataFrame criado acima. Utilizamos o 'Adj Close', porque é a principal informação
+    # que nos interessa.
+    for ativo in atvs:
+        data[ativo] = web.DataReader(ativo, data_source='yahoo', start=start, end=end)['Adj Close']
 
     return data
 
